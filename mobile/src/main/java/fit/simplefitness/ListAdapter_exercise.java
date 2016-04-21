@@ -9,15 +9,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fit.simplefitness.models.Exercise;
 
 
-public class ListAdapter extends ArrayAdapter<Exercise> {
+public class ListAdapter_exercise extends ArrayAdapter<Exercise> {
 
-    public ListAdapter(Context context, int textViewResourceId) {
+    public ListAdapter_exercise(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
-    public ListAdapter(Context context, int resource, List<Exercise> items) {
+    public ListAdapter_exercise(Context context, int resource, List<Exercise> items) {
         super(context, resource, items);
     }
 

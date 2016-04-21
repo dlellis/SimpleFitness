@@ -17,6 +17,8 @@ import com.orm.query.Select;
 
 import java.util.List;
 
+import fit.simplefitness.models.Exercise;
+
 public class CreateExercise extends AppCompatActivity {
     private static final String TAG = "CreateExerciseActivity";
 
@@ -101,7 +103,7 @@ public class CreateExercise extends AppCompatActivity {
     private void UpdateUI(){
         mExListView = (ListView) findViewById(R.id.exercises);
         List<Exercise> exercises = Select.from(Exercise.class).orderBy("name").list();
-        android.widget.ListAdapter mAdapter = new fit.simplefitness.ListAdapter(this, R.layout.content_create_exercise, exercises);
+        android.widget.ListAdapter mAdapter = new ListAdapter_exercise(this, R.layout.content_create_exercise, exercises);
         mExListView.setAdapter(mAdapter);
 
     }

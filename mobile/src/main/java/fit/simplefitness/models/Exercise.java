@@ -1,4 +1,4 @@
-package fit.simplefitness;
+package fit.simplefitness.models;
 
 import com.orm.SugarRecord;
 
@@ -8,10 +8,10 @@ import com.orm.SugarRecord;
 public class Exercise extends SugarRecord {
 
 
-        String name;
-        String miles;
-        String reps;
-        String sets;
+        public String name;
+        public String miles;
+        public String reps;
+        public String sets;
 
         public Exercise(){
 
