@@ -57,14 +57,17 @@ public class CreateExercise extends AppCompatActivity {
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(taskEditText.getText());
+                                String name = String.valueOf(taskEditText.getText());
                                 String reps = String.valueOf(taskNumReps.getText());
                                 String miles = String.valueOf(taskNumMiles.getText());
                                 String sets = String.valueOf(taskNumSets.getText());
-                                Log.d(TAG, "Exercise to add: " + task);
+                                Log.d(TAG, "Exercise to add: " + name);
                                 Log.d(TAG, "Number of miles: " + miles);
                                 Log.d(TAG, "Number of reps: " + reps);
                                 Log.d(TAG, "Number of sets: " + sets);
+                                Exercise ex = new Exercise(name, miles, reps, sets);
+                                ex.save();
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
