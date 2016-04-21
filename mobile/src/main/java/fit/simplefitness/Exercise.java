@@ -29,4 +29,6 @@ public class Exercise extends SugarRecord {
             return "Name: " + this.name + " Miles: " + this.miles + " Reps: " + this.reps + " Sets: " + this.sets;
         }
 
+
+
 }

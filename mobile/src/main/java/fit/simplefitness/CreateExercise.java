@@ -11,20 +11,37 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import com.orm.query.Select;
+
+import java.util.List;
 
 public class CreateExercise extends AppCompatActivity {
     private static final String TAG = "CreateExerciseActivity";
+
+    private ListView mExListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_exercise);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        UpdateUI();
+
+
+
+
 
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_exercise);
         fab.setOnClickListener(new View.OnClickListener() {
+
 
 
             @Override
@@ -67,6 +84,7 @@ public class CreateExercise extends AppCompatActivity {
                                 Log.d(TAG, "Number of sets: " + sets);
                                 Exercise ex = new Exercise(name, miles, reps, sets);
                                 ex.save();
+                                UpdateUI();
 
                             }
                         })
@@ -79,5 +97,15 @@ public class CreateExercise extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    private void UpdateUI(){
+        mExListView = (ListView) findViewById(R.id.exercises);
+        List<Exercise> exercises = Select.from(Exercise.class).orderBy("name").list();
+        android.widget.ListAdapter mAdapter = new fit.simplefitness.ListAdapter(this, R.layout.content_create_exercise, exercises);
+        mExListView.setAdapter(mAdapter);
+
+    }
+
+
 
 }
