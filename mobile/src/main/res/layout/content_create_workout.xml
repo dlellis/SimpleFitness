@@ -12,9 +12,17 @@
     tools:context=".CreateWorkout"
     tools:showIn="@layout/activity_create_workout">
 
+
+    <EditText android:id="@+id/name_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_workout" />
+
     <ListView
         android:id="@+id/exercises"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_workout"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

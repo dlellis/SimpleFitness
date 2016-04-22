@@ -12,16 +12,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.orm.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fit.simplefitness.models.Exercise;
+import fit.simplefitness.models.Workout;
 
 public class CreateWorkout extends AppCompatActivity {
     private static final String TAG = "CreateExerciseActivity";
-
+    private List<String> wkList = new ArrayList<String>();
     private ListView mExListView;
 
     @Override
@@ -33,8 +36,9 @@ public class CreateWorkout extends AppCompatActivity {
         setContentView(R.layout.activity_create_workout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        UpdateUI();
 
+
+        UpdateUI();
 
 
 
@@ -114,8 +118,18 @@ public class CreateWorkout extends AppCompatActivity {
     }
 
     public void addExercise(View view){
-        
+        View parent = (View) view.getParent();
+        TextView exTextView = (TextView) parent.findViewById(R.id.exercise_name);
+        String ex = String.valueOf(exTextView.getText());
+        Log.d("Name of Ex", ex);
+        wkList.add(ex);
 
+
+    }
+
+    public void create(){
+        Workout wk = new Workout("Place", wkList);
+        wk.save();
 
     }
 
