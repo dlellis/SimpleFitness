@@ -20,11 +20,12 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             >
-        <Button
+        <ImageButton
             android:id="@+id/save_workout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:src="@android:drawable/ic_menu_save"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_gravity="right"
             android.onClick="create"
             />
