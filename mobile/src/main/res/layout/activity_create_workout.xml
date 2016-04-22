@@ -19,17 +19,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            >
-        <ImageButton
-            android:id="@+id/save_workout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_save"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_gravity="right"
-            android.onClick="create"
             />
-        </android.support.v7.widget.Toolbar>
+
 
 
 

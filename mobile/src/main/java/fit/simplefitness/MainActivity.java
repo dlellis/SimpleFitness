@@ -6,11 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import com.orm.query.Select;
+
+import java.util.List;
+
+import fit.simplefitness.models.Workout;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
+
+
+    private ListView mWkListView;
     public void createExercise(View view){
         Intent intent = new Intent(this, CreateWorkout.class);
 
@@ -21,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UpdateUI();
     }
 
 
@@ -28,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem item = menu.findItem(R.id.save_save);
+        item.setVisible(false);
+        this.invalidateOptionsMenu();
+
         return true;
     }
 
@@ -44,5 +59,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void UpdateUI(){
+        mWkListView = (ListView) findViewById(R.id.workout_lView);
+        List<Workout> workouts = Select.from(Workout.class).orderBy("id").list();
+        android.widget.ListAdapter mAdapter = new ListAdapter_workout(this, R.layout.content_workout, workouts);
+        mWkListView.setAdapter(mAdapter);
+
     }
 }

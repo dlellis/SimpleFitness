@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -128,8 +130,38 @@ public class CreateWorkout extends AppCompatActivity {
     }
 
     public void create(){
-        Workout wk = new Workout("Place", wkList);
+
+        EditText editText = (EditText) findViewById(R.id.name_workout);
+        String wkName = editText.getText().toString();
+        Workout wk = new Workout(wkName, wkList);
         wk.save();
+        Log.d("create", "pressed");
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.save_save:
+                Log.d("test","first");
+                create();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    public void create_odd(){
+        Log.d("worked","real");
 
     }
 
