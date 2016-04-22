@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="fit.simplefitness.CreateExercise"
-    tools:showIn="@layout/activity_create_exercise">
+    tools:context=".CreateWorkout"
+    tools:showIn="@layout/activity_create_workout">
 
     <ListView
         android:id="@+id/exercises"

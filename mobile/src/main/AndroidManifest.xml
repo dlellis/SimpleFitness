@@ -18,8 +18,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateExercise"
-            android:label="@string/title_activity_create_exercise"
+            android:name=".CreateWorkout"
+            android:label="@string/title_activity_create_workout"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

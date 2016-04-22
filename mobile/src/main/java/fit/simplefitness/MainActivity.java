@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void createExercise(View view){
-        Intent intent = new Intent(this, CreateExercise.class);
+        Intent intent = new Intent(this, CreateWorkout.class);
 
         startActivity(intent);
     }

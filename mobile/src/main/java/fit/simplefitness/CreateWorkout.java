@@ -19,7 +19,7 @@ import java.util.List;
 
 import fit.simplefitness.models.Exercise;
 
-public class CreateExercise extends AppCompatActivity {
+public class CreateWorkout extends AppCompatActivity {
     private static final String TAG = "CreateExerciseActivity";
 
     private ListView mExListView;
@@ -30,7 +30,7 @@ public class CreateExercise extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_exercise);
+        setContentView(R.layout.activity_create_workout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         UpdateUI();
@@ -86,6 +86,11 @@ public class CreateExercise extends AppCompatActivity {
                                 Log.d(TAG, "Number of sets: " + sets);
                                 Exercise ex = new Exercise(name, miles, reps, sets);
                                 ex.save();
+                                String wkName = "Yay";
+//                                List<String> wkList = new ArrayList<String>();
+
+                                Log.d("id", Long.toString(ex.getId()));
+//                                Workout wk = new Workout(wkName, )
                                 UpdateUI();
 
                             }
@@ -103,8 +108,14 @@ public class CreateExercise extends AppCompatActivity {
     private void UpdateUI(){
         mExListView = (ListView) findViewById(R.id.exercises);
         List<Exercise> exercises = Select.from(Exercise.class).orderBy("name").list();
-        android.widget.ListAdapter mAdapter = new ListAdapter_exercise(this, R.layout.content_create_exercise, exercises);
+        android.widget.ListAdapter mAdapter = new ListAdapter_exercise(this, R.layout.content_create_workout, exercises);
         mExListView.setAdapter(mAdapter);
+
+    }
+
+    public void addExercise(View view){
+        
+
 
     }
 
