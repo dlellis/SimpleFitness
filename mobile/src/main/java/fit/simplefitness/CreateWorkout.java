@@ -2,6 +2,7 @@ package fit.simplefitness;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -122,9 +123,24 @@ public class CreateWorkout extends AppCompatActivity {
     public void addExercise(View view){
         View parent = (View) view.getParent();
         TextView exTextView = (TextView) parent.findViewById(R.id.exercise_name);
-        String ex = String.valueOf(exTextView.getText());
-        Log.d("Name of Ex", ex);
-        wkList.add(ex);
+        TextView button = (TextView) parent.findViewById(R.id.task_add);
+        if (button.getText().equals("Add")){
+            Log.d("Which one?", "Looks like you'll be adding");
+            String ex = String.valueOf(exTextView.getText());
+            Log.d("Name of Ex", ex);
+            wkList.add(ex);
+            button.setText("Remove");
+        }
+
+        else {
+            Log.d("Which one?", "Looks like you'll be removing");
+            String ex = String.valueOf(exTextView.getText());
+            wkList.remove(ex);
+            button.setText("Add");
+
+        }
+
+
 
 
     }
@@ -152,6 +168,10 @@ public class CreateWorkout extends AppCompatActivity {
             case R.id.save_save:
                 Log.d("test","first");
                 create();
+                Intent intent = new Intent(CreateWorkout.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
                 return true;
 
             default:
