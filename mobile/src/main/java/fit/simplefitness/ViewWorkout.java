@@ -1,7 +1,13 @@
 package fit.simplefitness;
 
-/**
- * Created by daltonellis on 4/24/16.
- */
-public class ViewWorkout {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class ViewWorkout extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_workout);
+    }
 }
