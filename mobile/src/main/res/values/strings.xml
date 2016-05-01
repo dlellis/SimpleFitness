@@ -7,4 +7,6 @@
     <string name="add">Add</string>
     <string name="remove">Remove</string>
     <string name="name_workout">Name Workout</string>
+    <string name="view">View</string>
+    <string name="title_activity_view_workout">ViewWorkout</string>
 </resources>

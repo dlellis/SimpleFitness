@@ -13,6 +13,7 @@ public class Exercise extends SugarRecord {
         public String reps;
         public String sets;
 
+
         public Exercise(){
 
         }
@@ -28,6 +29,9 @@ public class Exercise extends SugarRecord {
         public String toString(){
             return "Name: " + this.name + " Miles: " + this.miles + " Reps: " + this.reps + " Sets: " + this.sets;
         }
+
+
+
 
 
 

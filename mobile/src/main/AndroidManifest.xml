@@ -27,12 +27,34 @@
                 android:value="fit.simplefitness.MainActivity" />
         </activity>
 
-        <meta-data android:name="DATABASE" android:value="exercise.db" />
-        <meta-data android:name="VERSION" android:value="4" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="fit.simplefitness.models" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="exercise.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="4" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="fit.simplefitness.models" />
 
+        <activity
+            android:name=".ViewWorkout"
+            android:label="@string/title_activity_view_workout"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fit.simplefitness.MainActivity" />
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,14 +8,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="fit.simplefitness.ViewWorkout">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ViewWorkout"
+    tools:showIn="@layout/activity_view_workout">
+
 
     <ListView
-        android:id="@+id/view_work"
+        android:id="@+id/view_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_workout"
         android:layout_alignParentStart="true" />
-
 
 </RelativeLayout>

@@ -30,13 +30,13 @@ public class ListAdapter_view_exercise extends ArrayAdapter<Exercise> {
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            v = vi.inflate(R.layout.exercises, null);
+            v = vi.inflate(R.layout.view_exercises, null);
         }
 
         Exercise p = getItem(position);
 
         if (p != null) {
-            TextView tt1 = (TextView) v.findViewById(R.id.exercise_name);
+            TextView tt1 = (TextView) v.findViewById(R.id.exercise_2);
 
 
             if (tt1 != null) {

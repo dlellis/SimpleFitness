@@ -53,4 +53,5 @@ public class ListAdapter_workout extends ArrayAdapter<Workout> {
         return v;
     }
 
+
 }
