@@ -3,4 +3,5 @@
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
     <string name="notify">Sup ya\'ll</string>
+    <string name="send_sample">Hi, I\'m the send sample</string>
 </resources>
