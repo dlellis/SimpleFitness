@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
@@ -17,6 +18,7 @@ import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.MessageEvent;
 import com.orm.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fit.simplefitness.models.Workout;
@@ -47,9 +49,10 @@ public class MainActivity extends AppCompatActivity implements WearReceiveListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         UpdateUI();
-
         mOkWear = new OkWear(this);
         mOkWear.registReceiver(this);
+
+
 
     }
 
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements WearReceiveListen
         Log.d("findme", newint.toString());
         intent.putExtra("whichex", newint);
         startActivity(intent);
+        sampleSyncData(get_workouts());
     }
 
 
@@ -110,23 +114,49 @@ public class MainActivity extends AppCompatActivity implements WearReceiveListen
 
     }
 
-    public void get_workouts(){
+    public ArrayList<String> get_workouts(){
+        try {
+            List<Workout> workwork = Select.from(Workout.class).orderBy("id").list();
+            ArrayList<String> work3 = new ArrayList<String>();
+            for (Workout i : workwork){
+                work3.add(i.name);
+                Log.d("workworkwork", i.name);
+            }
+
+            return work3;
+
+        }
+        catch (IndexOutOfBoundsException e) {
+            return null;
 
     }
+    }
 
-    private void sampleSyncData() {
-        final Payload payload =
-                new Payload.Builder(OkWear.DEFAULT_DATA_API_PATH)
-                        .addPayload(OkWear.DEFAULT_DATA_API_KEY, mPayload++)
-                        .addPayload("my key", "hello")
-                        .build();
+    private void sampleSyncData(ArrayList<String> input) {
 
-        mOkWear.syncData(payload, new SendResultListener<DataApi.DataItemResult>() {
-            @Override
-            public void onResult(DataApi.DataItemResult result) {
-                Log.v(TAG, "Status: " + result.getStatus());
-            }
-        });
+
+
+
+        try {
+            final Payload payload =
+                    new Payload.Builder(OkWear.DEFAULT_DATA_API_PATH)
+                            //.addPayload(OkWear.DEFAULT_DATA_API_KEY, mPayload++)
+                            .addPayload("key2", input)
+                            .build();
+
+            mOkWear.syncData(payload, new SendResultListener<DataApi.DataItemResult>() {
+                @Override
+                public void onResult(DataApi.DataItemResult result) {
+                    Log.v(TAG, "Status: " + result.getStatus());
+                }
+            });
+            Log.d("test", "here3");
+        }
+
+        catch (Exception e){
+            Log.d("exception", e.toString());
+        }
+
     }
 
     protected void onResume() {
@@ -146,6 +176,12 @@ public class MainActivity extends AppCompatActivity implements WearReceiveListen
         if (messageEvent.getPath().equals(OkWear.DEFAULT_MESSAGE_API_PATH)) {
             final String messagePayload = new String(messageEvent.getData());
             Log.v(TAG, messagePayload);
+            this.runOnUiThread(new Runnable() {
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Starting " + messagePayload,Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 
@@ -155,7 +191,11 @@ public class MainActivity extends AppCompatActivity implements WearReceiveListen
             DataMap dataMap = DataMap.fromByteArray(event.getDataItem().getData());
             final int data = dataMap.getInt(OkWear.DEFAULT_DATA_API_KEY);
             Log.v(TAG, "data: " + data);
+
         }
 
     }
+
+
+
 }
