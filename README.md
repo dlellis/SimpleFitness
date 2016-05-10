@@ -40,13 +40,13 @@ Simply navigate to the application
 `Tools -> Android -> AVD Manager`
 
 1. At the top of android studio, select mobile next to the green arrow.
-1. Click the green arrow to run. 
-(You must have the device plugged in and recognized by android device manager or set up an emulator)
+1. Click the green arrow to run. <br>
+(You must have the device plugged in and recognized by android device manager or set up an emulator)<br>
 (You must also have the proper SDK libraries installed set in build.gradle. The SDK manager can help with this. Android Studio should error and tell you what you need.)
 
 1. The app should open on the phone if the phone is unlocked.
 
-1. For the wear device, you may run it from an emulator or device in the same way by selecting wear instead of mobile. The mobile and wear apps may not interact well unless you connect the phone and the watch already. Info on how to do that may be found here:
+1. For the wear device, you may run it from an emulator or device in the same way by selecting wear instead of mobile. The mobile and wear apps may not interact well unless you have connected the phone and the watch already. Info on how to do that may be found here:
 http://developer.android.com/training/wearables/apps/creating.html
 http://developer.android.com/training/wearables/apps/bt-debugging.html
 
